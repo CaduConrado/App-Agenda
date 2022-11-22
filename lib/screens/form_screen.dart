@@ -19,7 +19,7 @@ class _FormScreenState extends State<FormScreen> {
   final _formKey = GlobalKey<FormState>();
 
   bool valueValidator(String? value) {
-    if (value != null && value.isEmpty) {
+    if (value == null || value.isEmpty) {
       return true;
     }
     return false;
@@ -160,8 +160,8 @@ class _FormScreenState extends State<FormScreen> {
                               content: Text('Printando nova Tarefa'),
                             ),
                           );
+                          Navigator.pop(context);
                         }
-                        Navigator.pop(context);
                       },
                       child: const Text('Adicionar!'))
                 ],
