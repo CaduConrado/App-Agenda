@@ -25,12 +25,11 @@ class _FormScreenState extends State<FormScreen> {
     return false;
   }
 
-  bool difficultyValidator(String? value) {
-    if (value != null && value.isEmpty) {
-      if (int.parse(value) > 5 || int.parse(value) < 1) {
-        return true;
-      }
+  bool difficultyValidator(int value) {
+    if (value > 5 || value < 1) {
+      return true;
     }
+
     return false;
   }
 
@@ -81,7 +80,7 @@ class _FormScreenState extends State<FormScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
                       validator: (value) {
-                        if (difficultyValidator(value)) {
+                        if (difficultyValidator(int.tryParse(value!) ?? -1)) {
                           return 'Insira um valor entre 1 e 5';
                         }
                         return null;
